@@ -41,37 +41,37 @@ export class InverseClient extends SharedEndpoints {
    *
    */
 
-  getKline(params: SymbolIntervalFromLimitParam): GenericAPIResponse {
+  getKline(params: SymbolIntervalFromLimitParam): GenericAPIResponse<any> {
     return this.requestWrapper.get('v2/public/kline/list', params);
   }
 
   /**
    * @deprecated use getTickers() instead
    */
-  getLatestInformation(params?: Partial<SymbolParam>): GenericAPIResponse {
+  getLatestInformation(params?: Partial<SymbolParam>): GenericAPIResponse<any> {
     return this.getTickers(params);
   }
 
   /**
    * @deprecated use getTrades() instead
    */
-  getPublicTradingRecords(params: SymbolFromLimitParam): GenericAPIResponse {
+  getPublicTradingRecords(params: SymbolFromLimitParam): GenericAPIResponse<any> {
     return this.getTrades(params);
   }
 
-  getTrades(params: SymbolFromLimitParam): GenericAPIResponse {
+  getTrades(params: SymbolFromLimitParam): GenericAPIResponse<any> {
     return this.requestWrapper.get('v2/public/trading-records', params);
   }
 
-  getMarkPriceKline(params: SymbolIntervalFromLimitParam): GenericAPIResponse {
+  getMarkPriceKline(params: SymbolIntervalFromLimitParam): GenericAPIResponse<any> {
     return this.requestWrapper.get('v2/public/mark-price-kline', params);
   }
 
-  getIndexPriceKline(params: SymbolIntervalFromLimitParam): GenericAPIResponse {
+  getIndexPriceKline(params: SymbolIntervalFromLimitParam): GenericAPIResponse<any> {
     return this.requestWrapper.get('v2/public/index-price-kline', params);
   }
 
-  getPremiumIndexKline(params: SymbolIntervalFromLimitParam): GenericAPIResponse {
+  getPremiumIndexKline(params: SymbolIntervalFromLimitParam): GenericAPIResponse<any> {
     return this.requestWrapper.get('v2/public/premium-index-kline', params);
   }
 
@@ -99,7 +99,7 @@ export class InverseClient extends SharedEndpoints {
     sl_trigger_by?: 'LastPrice' | 'MarkPrice' | 'IndexPrice';
     close_on_trigger?: boolean;
     order_link_id?: string;
-  }): GenericAPIResponse {
+  }): GenericAPIResponse<any> {
     return this.requestWrapper.post('v2/private/order/create', orderRequest);
   }
 
@@ -109,7 +109,7 @@ export class InverseClient extends SharedEndpoints {
     direction?: string;
     limit?: number;
     cursor?: string;
-  }): GenericAPIResponse {
+  }): GenericAPIResponse<any> {
     return this.requestWrapper.get('v2/private/order/list', params);
   }
 
@@ -117,11 +117,11 @@ export class InverseClient extends SharedEndpoints {
     symbol: string;
     order_id?: string;
     order_link_id?: string;
-  }): GenericAPIResponse {
+  }): GenericAPIResponse<any> {
     return this.requestWrapper.post('v2/private/order/cancel', params);
   }
 
-  cancelAllActiveOrders(params: SymbolParam): GenericAPIResponse {
+  cancelAllActiveOrders(params: SymbolParam): GenericAPIResponse<any> {
     return this.requestWrapper.post('v2/private/order/cancelAll', params);
   }
 
@@ -135,7 +135,7 @@ export class InverseClient extends SharedEndpoints {
     stop_loss?: number;
     tp_trigger_by?:string;
     sl_trigger_by?:string;
-  }): GenericAPIResponse {
+  }): GenericAPIResponse<any> {
     return this.requestWrapper.post('v2/private/order/replace', params);
   }
 
@@ -143,7 +143,7 @@ export class InverseClient extends SharedEndpoints {
     order_id?: string;
     order_link_id?: string;
     symbol: string;
-  }): GenericAPIResponse {
+  }): GenericAPIResponse<any> {
     return this.requestWrapper.get('v2/private/order', params);
   }
 
@@ -163,7 +163,7 @@ export class InverseClient extends SharedEndpoints {
     trigger_by?: string;
     close_on_trigger?: boolean;
     order_link_id?: string;
-  }): GenericAPIResponse {
+  }): GenericAPIResponse<any> {
     return this.requestWrapper.post('v2/private/stop-order/create', params);
   }
 
@@ -173,7 +173,7 @@ export class InverseClient extends SharedEndpoints {
     direction?: string;
     limit?: number;
     cursor?: string;
-  }): GenericAPIResponse {
+  }): GenericAPIResponse<any> {
     return this.requestWrapper.get('v2/private/stop-order/list', params);
   }
 
@@ -181,11 +181,11 @@ export class InverseClient extends SharedEndpoints {
     symbol: string;
     stop_order_id?: string;
     order_link_id?: string;
-  }): GenericAPIResponse {
+  }): GenericAPIResponse<any> {
     return this.requestWrapper.post('v2/private/stop-order/cancel', params);
   }
 
-  cancelAllConditionalOrders(params: SymbolParam): GenericAPIResponse {
+  cancelAllConditionalOrders(params: SymbolParam): GenericAPIResponse<any> {
     return this.requestWrapper.post('v2/private/stop-order/cancelAll', params);
   }
 
@@ -196,7 +196,7 @@ export class InverseClient extends SharedEndpoints {
     p_r_qty?: number;
     p_r_price?: string;
     p_r_trigger_price?: string;
-  }): GenericAPIResponse {
+  }): GenericAPIResponse<any> {
     return this.requestWrapper.post('v2/private/stop-order/replace', params);
   }
 
@@ -204,7 +204,7 @@ export class InverseClient extends SharedEndpoints {
     symbol: string;
     stop_order_id?: string;
     order_link_id?: string;
-  }): GenericAPIResponse {
+  }): GenericAPIResponse<any> {
     return this.requestWrapper.get('v2/private/stop-order', params);
   }
 
@@ -215,25 +215,25 @@ export class InverseClient extends SharedEndpoints {
   /**
    * @deprecated use getPosition() instead
    */
-  getUserLeverage(): GenericAPIResponse {
+  getUserLeverage(): GenericAPIResponse<any> {
     return this.requestWrapper.get('user/leverage');
   }
 
-  getPosition(params?: Partial<SymbolParam>): GenericAPIResponse {
+  getPosition(params?: Partial<SymbolParam>): GenericAPIResponse<any> {
     return this.requestWrapper.get('v2/private/position/list', params);
   }
 
   /**
    * @deprecated use getPosition() instead
    */
-  getPositions(): GenericAPIResponse {
+  getPositions(): GenericAPIResponse<any> {
     return this.requestWrapper.get('position/list');
   }
 
   changePositionMargin(params: {
     symbol: string;
     margin: string;
-  }): GenericAPIResponse {
+  }): GenericAPIResponse<any> {
     return this.requestWrapper.post('position/change-position-margin', params);
   }
 
@@ -245,7 +245,7 @@ export class InverseClient extends SharedEndpoints {
     tp_trigger_by?: string;
     sl_trigger_by?: string;
     new_trailing_active?: number;
-  }): GenericAPIResponse {
+  }): GenericAPIResponse<any> {
     return this.requestWrapper.post('v2/private/position/trading-stop', params);
   }
 
@@ -253,14 +253,14 @@ export class InverseClient extends SharedEndpoints {
     symbol: string;
     leverage: number;
     leverage_only?: boolean;
-  }): GenericAPIResponse {
+  }): GenericAPIResponse<any> {
     return this.requestWrapper.post('v2/private/position/leverage/save', params);
   }
 
   /**
    * @deprecated use setUserLeverage() instead
    */
-  changeUserLeverage(params: any): GenericAPIResponse {
+  changeUserLeverage(params: any): GenericAPIResponse<any> {
     return this.setUserLeverage(params);
   }
 
@@ -271,7 +271,7 @@ export class InverseClient extends SharedEndpoints {
     page?: number;
     limit?: number;
     order?: string;
-  }): GenericAPIResponse {
+  }): GenericAPIResponse<any> {
     return this.requestWrapper.get('v2/private/execution/list', params);
   }
 
@@ -282,21 +282,21 @@ export class InverseClient extends SharedEndpoints {
     exec_type?: string;
     page?: number;
     limit?: number;
-  }): GenericAPIResponse {
+  }): GenericAPIResponse<any> {
     return this.requestWrapper.get('v2/private/trade/closed-pnl/list', params);
   }
 
   setPositionMode(params: {
     symbol: string;
     mode: 0 | 3;
-  }): GenericAPIResponse {
+  }): GenericAPIResponse<any> {
     return this.requestWrapper.post('v2/private/position/switch-mode', params);
   }
 
   setSlTpPositionMode(params: {
     symbol: string;
     tp_sl_mode: 'Full' | 'Partial';
-  }): GenericAPIResponse {
+  }): GenericAPIResponse<any> {
     return this.requestWrapper.post('v2/private/tpsl/switch-mode', params);
   }
 
@@ -305,7 +305,7 @@ export class InverseClient extends SharedEndpoints {
     is_isolated: boolean;
     buy_leverage: number;
     sell_leverage: number;
-  }): GenericAPIResponse {
+  }): GenericAPIResponse<any> {
     return this.requestWrapper.post('v2/private/position/switch-isolated', params);
   }
 
@@ -313,14 +313,14 @@ export class InverseClient extends SharedEndpoints {
    * Risk Limit
    */
 
-  getRiskLimitList(): GenericAPIResponse {
+  getRiskLimitList(): GenericAPIResponse<any> {
     return this.requestWrapper.get('open-api/wallet/risk-limit/list');
   }
 
   setRiskLimit(params: {
     symbol: string;
     risk_id: string;
-  }): GenericAPIResponse {
+  }): GenericAPIResponse<any> {
     return this.requestWrapper.post('open-api/wallet/risk-limit', params);
   }
 
@@ -328,15 +328,15 @@ export class InverseClient extends SharedEndpoints {
    * Funding
    */
 
-  getLastFundingRate(params: SymbolParam): GenericAPIResponse {
+  getLastFundingRate(params: SymbolParam): GenericAPIResponse<any> {
     return this.requestWrapper.get('v2/public/funding/prev-funding-rate', params);
   }
 
-  getMyLastFundingFee(params: SymbolParam): GenericAPIResponse {
+  getMyLastFundingFee(params: SymbolParam): GenericAPIResponse<any> {
     return this.requestWrapper.get('v2/private/funding/prev-funding', params);
   }
 
-  getPredictedFunding(params: SymbolParam): GenericAPIResponse {
+  getPredictedFunding(params: SymbolParam): GenericAPIResponse<any> {
     return this.requestWrapper.get('v2/private/funding/predicted-funding', params);
   }
 
@@ -344,13 +344,13 @@ export class InverseClient extends SharedEndpoints {
    * LCP Info
    */
 
-  getLcpInfo(params: SymbolParam): GenericAPIResponse {
+  getLcpInfo(params: SymbolParam): GenericAPIResponse<any> {
     return this.requestWrapper.get('v2/private/account/lcp', params);
   }
 
   //API Key Info
-  getAPIKeyInfo(): GenericAPIResponse {
+  getAPIKeyInfo(): GenericAPIResponse<any> {
     return this.requestWrapper.get('v2/private/account/api-key');
   }
 
-};
+}

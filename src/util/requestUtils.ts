@@ -19,7 +19,7 @@ export interface RestClientOptions {
   parse_exceptions?: boolean;
 }
 
-export type GenericAPIResponse = Promise<any>;
+export type GenericAPIResponse<T> = Promise<T>;
 
 export function serializeParams(params: object = {}, strict_validation = false): string {
   return Object.keys(params)
@@ -32,7 +32,7 @@ export function serializeParams(params: object = {}, strict_validation = false):
       return `${key}=${value}`;
     })
     .join('&');
-};
+}
 
 export function getRestBaseUrl(useLivenet: boolean, restInverseOptions: RestClientOptions) {
   const baseUrlsInverse = {
